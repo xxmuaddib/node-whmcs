@@ -1,5 +1,5 @@
-var fs = require('fs');
-var libPath = __dirname + '/modules';
+var fs = require("fs");
+var libPath = __dirname + "/modules";
 
 /**
  * WHMCS client
@@ -8,11 +8,11 @@ var libPath = __dirname + '/modules';
 var WHMCS = function(options) {
   var _this = this;
 
-  this.utils = require('./lib/utils');
+  this.utils = require("./lib/utils");
 
-  ['username', 'serverUrl'].forEach(function(required) {
+  ["username", "serverUrl"].forEach(function(required) {
     if (!options[required]) {
-      throw new Error('options.' + required + ' is a required argument.');
+      throw new Error("options." + required + " is a required argument.");
     }
   });
 
@@ -24,8 +24,8 @@ var WHMCS = function(options) {
   var i = 0;
   var len = files.length;
   while (i < len) {
-    var name = files[i].replace('.js', '');
-    var Item = require(libPath + '/' + name);
+    var name = files[i].replace(".js", "");
+    var Item = require(libPath + "/" + name);
     _this[name] = new Item(this.config);
     i++;
   }
