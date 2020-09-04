@@ -103,4 +103,67 @@ Domains.prototype.setDomainNameservers = function (domainid, nameservers, callba
   utils.modem(createOptions, callback);
 };
 
+Domains.prototype.changeIdProtection = function (domainid, callback) {
+  var options = {
+    action: 'domaintoggleidprotect',
+    domainid: domainid
+  };
+
+  //options = extend(options, opts);
+
+  var opts = {
+    client: this,
+    body: options
+  };
+
+  utils.modem(opts, callback);
+
+};
+
+Domains.prototype.WhoisDomain = function (domain, callback) {
+  var options = {
+    action: 'domainwhois',
+    domain,
+  };
+
+  const opts = {
+    client: this,
+    body: options,
+  };
+
+  utils.modem(opts, callback);
+
+};
+
+Domains.prototype.getWhoisInfo = function (domainid, callback) {
+
+      const options = {
+          action: 'domaingetwhoisinfo',
+          domainid,
+      };
+
+      const opts = {
+          client: this,
+          body: options,
+      };
+
+      utils.modem(opts, callback);
+};
+
+Domains.prototype.setWhoisInfo = function (domainid, xml, callback) {
+      const options = {
+        action: 'DomainUpdateWhoisInfo',
+        domainid,
+        xml,
+      };
+
+      const opts = {
+        client: this,
+        body: options,
+      };
+     
+    utils.modem(opts, callback);
+};
+
+
 module.exports = Domains;
